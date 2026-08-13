@@ -11,7 +11,17 @@ async function sendMessage(chatId:number|string,text:string,replyMarkup?:unknown
 export async function POST(request:Request){
  if(!BOT_TOKEN) return NextResponse.json({error:'Bot is not configured'},{status:503});
  try{
-  const update=await request.json(); const message=update?.message; if(!message?.chat?.id) return NextResponse.json({ok:true});
+  const update=await request.json();
+  const message=update?.message;
+  const callback=update?.callback_query;
+  if(callback?.message?.chat?.id){
+   const chatId=callback.message.chat.id;
+   const type=String(callback.data||'').replace('type:','');
+   await sendMessage(chatId,`<b>${type}</b> bo‘yicha mos imkoniyatlarni tayyorlayapman.\n\nProfilingizni to‘ldirsangiz, natijalarni yanada aniq saralaymiz.`);
+   if(callback.id) await fetch(`${API}/answerCallbackQuery`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({callback_query_id:callback.id})});
+   return NextResponse.json({ok:true});
+  }
+  if(!message?.chat?.id) return NextResponse.json({ok:true});
   const chatId=message.chat.id; const text=String(message.text||'').trim();
   if(text.startsWith('/start')){
    await sendMessage(chatId,'<b>Assalomu alaykum! Imkon</b> — sizga mos ish, stajirovka, grant va bepul kurslarni topishga yordam beradi.\n\nBoshlash uchun yo‘nalishingizni tanlang.',{inline_keyboard:[[{text:'💼 Ish',callback_data:'type:Ish'},{text:'🎓 Stajirovka',callback_data:'type:Stajirovka'}],[{text:'💰 Grant',callback_data:'type:Grant'},{text:'📚 Kurs',callback_data:'type:Kurs'}]]});
