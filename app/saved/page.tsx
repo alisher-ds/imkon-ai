@@ -1,0 +1,10 @@
+'use client';
+import { useEffect, useState } from 'react';
+
+type Opportunity={id:string;title:string;organization:string;type:string;location:string;mode:string;category:string;experience:string;description:string;deadline:string|null;url:string;is_verified:boolean};
+export default function SavedPage(){
+ const [items,setItems]=useState<Opportunity[]>([]);
+ useEffect(()=>{const raw=localStorage.getItem('imkon-saved');const ids:string[]=raw?JSON.parse(raw):[];fetch('/api/opportunities').then(r=>r.json()).then(d=>setItems((d.opportunities||[]).filter((x:Opportunity)=>ids.includes(x.id)))).catch(()=>{});},[]);
+ const remove=(id:string)=>{const ids:string[]=JSON.parse(localStorage.getItem('imkon-saved')||'[]');const next=ids.filter(x=>x!==id);localStorage.setItem('imkon-saved',JSON.stringify(next));setItems(x=>x.filter(o=>o.id!==id));};
+ return <main><div className="container saved-page"><a href="/" className="back">← Imkoniyatlarga qaytish</a><div className="eyebrow">MENING RO‘YXATIM</div><h1>Saqlangan imkoniyatlar</h1><p className="muted">Qiziqqan imkoniyatlaringiz shu yerda.</p>{items.length?<div className="opps">{items.map(o=><article className="opportunity" key={o.id}><div className="type">{o.type.toUpperCase()} {o.is_verified&&' · ✓ TEKSHIRILGAN'}</div><h3>{o.title}</h3><div className="meta">{o.organization} · {o.location} · {o.mode}<br/>{o.category} · {o.experience}</div><p className="muted">{o.description}</p><div className="card-actions"><a className="card-link" href={o.url} target="_blank" rel="noreferrer">Batafsil →</a><button className="save-btn saved" onClick={()=>remove(o.id)}>♥ Olib tashlash</button></div></article>)}</div>:<div className="empty"><strong>Hali hech narsa saqlanmagan.</strong><p className="muted">Sizga yoqqan imkoniyatlarda “Saqlash” tugmasini bosing.</p><a className="btn btn-primary" href="/">Imkoniyatlarni ko‘rish →</a></div>}</div></main>;
+}
