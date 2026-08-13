@@ -67,10 +67,5 @@ begin
 end;
 $$;
 
-insert into public.opportunities (title, organization, type, location, mode, category, experience, description, deadline, url, source, source_url, is_verified)
-values
-('Junior SMM Assistant', 'Local startup', 'Ish', 'Toshkent', 'Gibrid', 'SMM', 'Boshlang‘ich', 'Kontent rejalashtirish va ijtimoiy tarmoqlar bilan ishlash.', current_date + 18, 'https://example.com', 'demo', 'https://example.com', true),
-('Frontend Internship', 'Tech company', 'Stajirovka', 'Toshkent', 'Ofis', 'IT', 'Boshlang‘ich', 'Real product jamoasida frontend tajribasi olish imkoniyati.', current_date + 27, 'https://example.com', 'demo', 'https://example.com', true),
-('Digital Skills Scholarship', 'Education foundation', 'Grant', 'O‘zbekiston', 'Masofaviy', 'Ta’lim', 'Boshlang‘ich', 'Raqamli ko‘nikmalar kurslari uchun to‘liq grant.', current_date + 35, 'https://example.com', 'demo', 'https://example.com', true),
-('English for Career — Free', 'Open learning', 'Kurs', 'O‘zbekiston', 'Masofaviy', 'Ingliz tili', 'Boshlang‘ich', 'Ish va universitet uchun bepul ingliz tili kursi.', null, 'https://example.com', 'demo', 'https://example.com', true)
-on conflict do nothing;
+-- Production seed is intentionally empty. Opportunities must come from verified sources.
+-- Never use placeholder URLs or mark demo records as verified.
