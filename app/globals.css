@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+:root { --ink:#10221b; --muted:#607068; --line:#e4ebe7; --paper:#f7faf8; --card:#ffffff; --accent:#0d8f62; --accent-dark:#08734f; --soft:#e9f7f1; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial, Helvetica, sans-serif; }
+button,input,select { font:inherit; }
+button { cursor:pointer; }
+.container { width:min(1120px, calc(100% - 32px)); margin:auto; }
+.hero { padding:28px 0 88px; background:radial-gradient(circle at 80% 20%, #dff5eb 0, transparent 30%), linear-gradient(180deg,#f7faf8 0%,#eef8f3 100%); }
+.nav { display:flex; align-items:center; justify-content:space-between; padding:10px 0 50px; }
+.logo { font-size:25px; font-weight:900; letter-spacing:-1px; }
+.logo span { color:var(--accent); }
+.nav a { color:var(--ink); text-decoration:none; font-weight:700; }
+.pill { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid #cfe3da; border-radius:999px; background:#fff; color:var(--accent-dark); font-size:13px; font-weight:800; }
+.hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:60px; align-items:center; }
+.eyebrow { color:var(--accent-dark); font-weight:800; font-size:14px; margin-bottom:18px; }
+h1 { font-size:clamp(46px,7vw,76px); line-height:.98; letter-spacing:-4px; margin:0 0 24px; max-width:760px; }
+.hero-copy { color:var(--muted); font-size:18px; line-height:1.65; max-width:620px; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:30px; }
+.btn { border:0; border-radius:14px; padding:14px 19px; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; }
+.btn-primary { background:var(--ink); color:#fff; box-shadow:0 10px 25px #10221b1c; }
+.btn-secondary { background:#fff; color:var(--ink); border:1px solid var(--line); }
+.mock { background:#12231c; border-radius:28px; padding:16px; box-shadow:0 30px 70px #10221b25; transform:rotate(1.5deg); }
+.phone { background:#f8fbf9; border-radius:20px; padding:16px; min-height:430px; }
+.phone-top { display:flex; justify-content:space-between; color:var(--muted); font-size:12px; margin-bottom:18px; }
+.bot-title { font-weight:900; font-size:20px; margin-bottom:4px; }
+.bot-sub { color:var(--muted); font-size:12px; margin-bottom:16px; }
+.op { background:#fff; border:1px solid var(--line); padding:13px; border-radius:15px; margin-top:10px; }
+.op strong { display:block; font-size:14px; }
+.op small { color:var(--muted); display:block; margin-top:6px; line-height:1.4; }
+.tag { display:inline-block; margin-top:9px; margin-right:5px; background:var(--soft); color:var(--accent-dark); border-radius:999px; padding:4px 7px; font-size:10px; font-weight:800; }
+.section { padding:90px 0; }
+.section-head { max-width:650px; margin-bottom:34px; }
+.section h2 { font-size:42px; letter-spacing:-2px; margin:0 0 12px; }
+.muted { color:var(--muted); line-height:1.65; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:20px; padding:24px; }
+.number { width:36px; height:36px; border-radius:12px; background:var(--soft); color:var(--accent-dark); display:grid; place-items:center; font-weight:900; margin-bottom:24px; }
+.card h3 { margin:0 0 8px; font-size:20px; }
+.opps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.opportunity { background:#fff; border:1px solid var(--line); border-radius:20px; padding:20px; }
+.opportunity .type { font-size:12px; color:var(--accent-dark); font-weight:900; }
+.opportunity h3 { margin:10px 0 8px; font-size:19px; }
+.meta { color:var(--muted); font-size:13px; line-height:1.7; }
+.deadline { margin-top:15px; font-weight:800; font-size:13px; }
+.cta { background:var(--ink); color:#fff; border-radius:28px; padding:50px; display:flex; align-items:center; justify-content:space-between; gap:30px; }
+.cta h2 { margin:0; color:#fff; }
+footer { padding:30px 0 50px; color:var(--muted); font-size:13px; }
+@media(max-width:800px){ .hero-grid,.grid3,.opps { grid-template-columns:1fr; } .hero { padding-bottom:55px; } h1 { letter-spacing:-2.5px; } .mock { margin-top:15px; } .section { padding:65px 0; } .cta { padding:32px; flex-direction:column; align-items:flex-start; } .nav { padding-bottom:35px; } }
