@@ -1,28 +1,25 @@
 # Imkon
 
-Telegram-first opportunity discovery platform for Uzbekistan: find relevant jobs, internships, grants and free courses without digging through dozens of channels.
+Telegram-first platform for discovering verified jobs, internships, grants and free courses in Uzbekistan.
 
-## MVP principles
+## MVP
+- Opportunity discovery with search and filters
+- Transparent profile-based matching
+- Saved opportunities
+- Opportunity detail pages
+- Supabase schema with RLS
+- Deadline reminder subscriptions
+- Telegram webhook foundation
+- PWA and SEO metadata
+- GitHub Actions production build check
 
-- $0 infrastructure target
-- Mobile-first experience
-- Explainable matching instead of opaque AI
-- Verified opportunity data as the core trust layer
-- Fast path from profile to relevant opportunities
+## Zero-cost deployment
+The project targets free tiers only. No paid service is required for the MVP. A Vercel project must be created/imported by the account owner before deployment can be managed through the connected Vercel tools.
 
-## Stack
+## Environment
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `TELEGRAM_BOT_TOKEN`
 
-Next.js · TypeScript · Tailwind CSS · Supabase · Telegram Bot API
-
-## Local development
-
-```bash
-npm install
-npm run dev
-```
-
-Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` when connecting the database.
-
-## Product flow
-
-Profile → filters → relevant opportunities → save → apply → deadline reminders.
+## Supabase
+Run the SQL files in `supabase/` in order. Keep service-role credentials server-side only.
